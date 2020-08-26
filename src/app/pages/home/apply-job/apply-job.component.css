@@ -1,0 +1,27 @@
+form>* {
+  font-size: 1.3rem;
+}
+
+.heading {
+  font-size: 2rem;
+}
+
+.container {
+  margin: auto;
+  position: relative;
+}
+
+.note-hint {
+  font-size: 1.1rem;
+}
+
+.close {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+}
+
+.add-skills {
+  font-size: 1.6rem;
+}

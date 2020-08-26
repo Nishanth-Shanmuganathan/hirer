@@ -1,0 +1,89 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+mat-panel-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 40%;
+  min-width: 10rem;
+  max-width: 50rem;
+}
+
+mat-panel-description {
+  font-size: 1.3rem;
+}
+
+.expansion-content {
+  position: relative;
+}
+
+.edit {
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+}
+
+.desc,
+.skills,
+.exp {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-weight: bolder;
+}
+
+.desc__content {
+  font-size: 1.3rem;
+  text-align: justify;
+  text-indent: 2rem;
+}
+
+.skills_content li {
+  margin-left: 3rem;
+}
+
+table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.date {
+  font-size: 1.3rem;
+}
+
+.chip {
+  padding: .5rem;
+  color: white;
+  border-radius: 1.5rem;
+  font-size: 1.3rem
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+.center {
+  text-align: center;
+}
+
+.empty {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+}
+
+.empty__pic {
+  width: 50%;
+}
+
+.empty__text {
+  font-weight: bold;
+}

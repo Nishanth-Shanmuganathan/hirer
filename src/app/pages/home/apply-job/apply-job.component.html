@@ -1,0 +1,105 @@
+<div class="container" mat-dialog-content>
+  <button mat-icon-button class="close text-danger" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="row pt-3">
+    <div class="col-*">
+      <p class="heading">Application Form</p>
+    </div>
+  </div>
+  <form [formGroup]="applyForm" (ngSubmit)="applyJob()">
+    <div class="row mt-3 mb-3 justify-content-center">
+      <div class="col-*">
+        <mat-form-field>
+          <mat-label> Applicant Name </mat-label>
+          <input matInput formControlName="name" />
+          <mat-error>Please provide your name</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mb-3 justify-content-center">
+      <div class="col-*">
+        <mat-form-field>
+          <mat-label> A short note about you... </mat-label>
+          <textarea matInput formControlName="note"></textarea>
+          <mat-hint align="end" class="note-hint">
+            {{ applyForm.get("note").value?.length || 0 }}/500
+          </mat-hint>
+          <mat-error>Please provide a note about you</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <div class="col-*">
+        <mat-form-field>
+          <mat-label> Schedule your date </mat-label>
+          <input
+            matInput
+            [matDatepicker]="myDatepicker1"
+            formControlName="date1"
+            [min]="today"
+            readonly
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myDatepicker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker1></mat-datepicker>
+          <mat-error>Please schedule your interview date</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <div class="col-*">
+        <mat-form-field>
+          <mat-label> Alternate date </mat-label>
+          <input
+            matInput
+            [matDatepicker]="myDatepicker2"
+            formControlName="date2"
+            readonly
+            [min]="applyForm.get('date1')?.value"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myDatepicker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker2></mat-datepicker>
+          <mat-error>Please provide an alternate date</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-*">
+        <input
+          type="file"
+          class="d-none"
+          #filePicker
+          (change)="onImagePicked($event)"
+        />
+        <button
+          mat-flat-button
+          color="accent"
+          type="button"
+          (click)="filePicker.click()"
+        >
+          Upload Resume
+        </button>
+        <p class="text-muted m-2">{{ applyForm.get("resume").value?.name }}</p>
+        <p *ngIf="fileError === 'required'" class="text-danger m-2">
+          Resume is required
+        </p>
+        <p *ngIf="fileError === 'error'" class="text-danger m-2">
+          Resume should be in pdf format
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
+<mat-dialog-actions align="end" class="mb-3">
+  <button mat-raised-button color="primary" (click)="applyJob()">Apply</button>
+</mat-dialog-actions>

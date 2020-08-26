@@ -1,0 +1,62 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
+  class="d-flex flex-column justify-content-between"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Email Id</mat-label>
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="john@example.com"
+      matInput
+    />
+    <mat-error
+      *ngIf="loginForm.controls.email.errors?.required; else invalidEmail"
+      >Email id is required...</mat-error
+    >
+    <ng-template #invalidEmail>
+      <mat-error>Invalid Email Id...</mat-error>
+    </ng-template>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input
+      type="{{ helperPassword ? 'text' : 'password' }}"
+      formControlName="password"
+      placeholder="*********"
+      matInput
+      autocomplete="additional-name"
+    />
+    <mat-hint>Minimum 10 characters required...</mat-hint>
+    <mat-error
+      *ngIf="loginForm.controls.password.errors?.required; else invalidPassword"
+    >
+      Password is required...
+    </mat-error>
+    <ng-template #invalidPassword>
+      <mat-error>Minimum 10 characters required...</mat-error>
+    </ng-template>
+    <button
+      type="button"
+      mat-icon-button
+      matSuffix
+      (click)="helperPassword = !helperPassword"
+    >
+      <mat-icon *ngIf="!helperPassword">visibility</mat-icon>
+      <mat-icon *ngIf="helperPassword">visibility_off</mat-icon>
+    </button>
+  </mat-form-field>
+  <button class="form-buttons" mat-raised-button color="primary">
+    {{ !isLoading ? "Login" : "Logging in..." }}
+  </button>
+  <button
+    class="form-buttons"
+    type="button"
+    mat-raised-button
+    color="accent"
+    (click)="changeMode.emit()"
+  >
+    Register
+  </button>
+</form>

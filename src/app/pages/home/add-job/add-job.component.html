@@ -1,0 +1,86 @@
+<div class="container pt-5 pb-5" mat-dialog-content>
+  <button mat-icon-button class="close text-danger" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <form [formGroup]="addForm" (ngSubmit)="postJob()">
+    <div
+      class="row mb-3 justify-content-center justify-content-lg-around align-items-center"
+    >
+      <div class="col-12 col-lg-5">
+        <mat-form-field>
+          <mat-label> Job Designation </mat-label>
+          <input matInput formControlName="designation" />
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-lg-5">
+        <mat-form-field>
+          <mat-label> Job Description </mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div
+      class="row mt-5 mb-5 justify-content-center align-items-center"
+      formArrayName="skills"
+    >
+      <div class="col-12 row justify-content-center align-items-center">
+        <div class="col-12 mb-4">
+          <span>Skills Required:</span>
+        </div>
+        <div class="col-12 col-sm-10 col-md-8">
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip
+              *ngFor="let skills of addForm.get('skills')['controls']"
+              color="accent"
+              selected
+              >{{ skills.value }}</mat-chip
+            >
+          </mat-chip-list>
+        </div>
+      </div>
+      <div class="col-12 row justify-content-center">
+        <mat-form-field>
+          <input class="col-*" matInput type="text" #skill />
+          <mat-icon
+            class="text-success"
+            (click)="onAddSkill(skill.value)"
+            matSuffix
+            matTooltip="Add Skill"
+          >
+            control_point
+          </mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div
+      class="row mb-3 justify-content-center justify-content-lg-around align-items-center"
+    >
+      <div class="col-12 col-lg-5">
+        <mat-form-field>
+          <mat-label> Minimum Experience </mat-label>
+          <input matInput type="number" formControlName="experience" min="0" />
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-lg-5">
+        <mat-form-field>
+          <mat-label> Name of HR </mat-label>
+          <input matInput type="text" formControlName="postedBy" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mb-3 justify-content-around align-items-center">
+      <span class="col-12 col-lg-4">Schedule interview timings </span>
+      <mat-form-field class="col-5 col-lg-4">
+        <input matInput type="time" formControlName="time1" />
+      </mat-form-field>
+      <mat-form-field class="col-5 col-lg-4">
+        <input matInput type="time" formControlName="time2" />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<mat-dialog-actions align="end" class="mb-3">
+  <button mat-raised-button (click)="postJob()" color="primary">Apply</button>
+</mat-dialog-actions>

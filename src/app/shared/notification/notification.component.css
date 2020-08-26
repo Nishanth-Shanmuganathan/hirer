@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  font-size: 1.4rem;
+}
+
+.close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  color: rgb(200, 0, 0);
+}

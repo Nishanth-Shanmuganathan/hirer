@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="auth row justify-content-center">
+    <div
+      class="auth__cover auth--image d-none d-md-block col-md-6 col-ld-7"
+    ></div>
+    <div class="logo">
+      <img class="logo__image" src="../../../assets/sm.png" alt="logo" />
+      <span class="logo__title"> Hirer </span>
+    </div>
+    <div class="auth__form col-12 col-md-6 col-ld-5">
+      <mat-card class="auth_form--outlet">
+        <app-login
+          *ngIf="loginMode"
+          (changeMode)="loginMode = !loginMode"
+        ></app-login>
+        <app-register
+          *ngIf="!loginMode"
+          (changeMode)="loginMode = !loginMode"
+        ></app-register>
+      </mat-card>
+    </div>
+  </div>
+</div>

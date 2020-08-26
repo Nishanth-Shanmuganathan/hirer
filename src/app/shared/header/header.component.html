@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="logo">
+      <img class="logo__image" src="../../../assets/sm.png" alt="logo" />
+      <span class="logo__title"> HIRER </span>
+    </div>
+    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>person_outline</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="changePrespective()">
+    <mat-icon>swap_horiz</mat-icon>
+    <span>Login as {{ admin === true ? "Applicant" : "HR" }}</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon class="text-danger">login</mat-icon>
+    <span class="text-danger">Logout</span>
+  </button>
+</mat-menu>
